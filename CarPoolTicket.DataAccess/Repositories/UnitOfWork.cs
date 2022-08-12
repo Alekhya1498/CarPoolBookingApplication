@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusTicket.DataAccess.Repositories
+namespace CarPoolTicket.DataAccess.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -14,11 +14,11 @@ namespace BusTicket.DataAccess.Repositories
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            BusRepository = new CarRepository(_context);
+            CarRepository = new CarRepository(_context);
             SeatRepository = new SeatRepositoy(_context);
         }
 
-        public ICarRepository BusRepository { get; private set; }
+        public ICarRepository CarRepository { get; private set; }
 
         public ISeatRepository SeatRepository { get; private set; }
 

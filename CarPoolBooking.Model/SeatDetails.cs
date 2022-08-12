@@ -14,7 +14,7 @@ namespace CarPoolBooking.Models
 
         public string Description { get; set; }
 
-        public int BusId { get; set; }
+        public int CarId { get; set; }
 
         public Car Car { get; set; }
     }

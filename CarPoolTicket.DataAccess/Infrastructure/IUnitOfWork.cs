@@ -8,7 +8,7 @@ namespace CarPoolTicket.DataAccess.Infrastructure
 {
     public interface IUnitOfWork
     {
-        ICarRepository BusRepository { get; }
+        ICarRepository CarRepository { get; }
 
         ISeatRepository SeatRepository { get; }
 

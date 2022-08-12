@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusTicket.DataAccess
+namespace CarPoolTicket.DataAccess
 {
     public class ApplicationDbContext : IdentityDbContext
     {

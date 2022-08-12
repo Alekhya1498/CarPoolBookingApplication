@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using CoolPoolTicket.DataAccess.Repositories;
-using BusTicket.DataAccess;
+using CarPoolTicket.DataAccess;
 
 namespace CarPoolTicket.DataAccess.Repositories
 {

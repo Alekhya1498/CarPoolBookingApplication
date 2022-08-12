@@ -1,4 +1,4 @@
-﻿using BusTicket.DataAccess;
+﻿using CarPoolTicket.DataAccess;
 using CarPoolTicket.DataAccess.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -1,5 +1,7 @@
-using BusTicket.DataAccess;
+using CarPoolTicket.DataAccess;
+using CarPoolTicket.DataAccess.Repositories;
 using CarPoolBooking.Models;
+using CarPoolTicket.DataAccess.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,9 +30,12 @@ namespace CarPoolBookingApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<ApplicationUser>().AddRoles<IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
@@ -58,7 +63,8 @@ namespace CarPoolBookingApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=admin}/{controller=car}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

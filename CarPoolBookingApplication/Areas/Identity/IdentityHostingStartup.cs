@@ -1,5 +1,5 @@
 ﻿using System;
-using BusTicket.DataAccess;
+using CarPoolTicket.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
