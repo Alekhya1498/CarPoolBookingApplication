@@ -12,6 +12,7 @@ using CarPoolTicket.DataAccess.Repositories;
 using CarPoolBooking.Models;
 using CarPoolBooking.Models.ViewModels;
 using CarPoolBookingApplication.Areas.Admin.Controllers;
+using Moq;
 
 namespace CarPoolTicketApplication.Tests
 {
@@ -20,14 +21,14 @@ namespace CarPoolTicketApplication.Tests
     {
         private readonly CarController carController;
         private readonly IUnitOfWork unitOfWork;
-        private readonly ApplicationDbContext _context;
+        private readonly Mock<ApplicationDbContext> _context;
         private readonly DbContextOptions<ApplicationDbContext> dbContextOptions = new DbContextOptions<ApplicationDbContext>();
 
         public CarControllerTest()
         {
-            _context = Substitute.For<ApplicationDbContext>();
+            _context = TransactionalEfContext.Get();
             var mockDbSet = Substitute.For<DbSet<Car>, IQueryable<Car>>();
-            unitOfWork = new UnitOfWork(_context);
+            unitOfWork = new UnitOfWork(_context.Object);
             carController = new CarController(unitOfWork);
         }
 
